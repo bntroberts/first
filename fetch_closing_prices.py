@@ -27,7 +27,7 @@ TICKERS = [
 
 
 def fetch_closing_prices(tickers, target_date):
-    """
+    "2025-10-28"
     Fetch closing prices for a list of tickers on a specified date.
 
     Args:
