@@ -48,7 +48,7 @@ Be accurate with Brandon about this:
   - If he only has plain text, use it as the authoritative wording and get timings from an automatic word-timing pass on the audio. Tell him you did this.
 - **Statistic sources:** IPB cites credible research (LIMRA, Morningstar, DOL, TIAA and similar). Put a source in `source_note` only when Brandon provides or confirms it. Never invent a citation, and list any unsourced stats in your delivery.
 - **Teleprompter script:** when Brandon supplies it, its `[On screen: ...]` notes are the confirmed sources, and any `[B-roll: ...]` notes are B-roll requests that take priority over your own picks. Show a source on every data sequence and add a `source_tags` call-out whenever he mentions research without a stat card. Where the spoken words differ from the script, cards follow what he said; flag the difference.
-- **Rendering engine:** `scripts/ipb_edit.py`, `references/edit-plan.md`, `assets/example-plan.json` and `assets/fonts/` come from the v1.0 Perplexity skill. If they aren't in this skill folder yet, ask Brandon to add them before the first edit; don't rebuild the renderer from scratch without telling him.
+- **Rendering engine:** `scripts/ipb_edit.py` (graphics, from the v1.0 Perplexity skill) and `scripts/broll_overlay.py` (B-roll). They need ffmpeg plus `pip install opencv-python-headless numpy pillow`. Fonts (Lato, PT Serif, both OFL-licensed) are in `assets/fonts/`.
 
 ## Workflow
 

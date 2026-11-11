@@ -1,0 +1,113 @@
+{
+  "source": "rough-cut.mp4",
+  "output": "<Video Title> - Edited v1.mp4",
+  "face_center": [
+    975,
+    380
+  ],
+  "lower_third": {
+    "text": "Brandon Roberts",
+    "subtitle": "The Insurance Pro Blog",
+    "in": 4.05,
+    "out": 8.9
+  },
+  "zooms": [
+    [
+      1.2,
+      1.6,
+      1.0,
+      1.12
+    ],
+    [
+      3.45,
+      3.85,
+      1.12,
+      1.0
+    ],
+    [
+      9.3,
+      12.4,
+      1.0,
+      1.07
+    ],
+    [
+      12.9,
+      13.3,
+      1.07,
+      1.13
+    ],
+    [
+      32.2,
+      40.3,
+      1.0,
+      1.08
+    ],
+    [
+      40.3,
+      40.7,
+      1.08,
+      1.16
+    ],
+    [
+      43.55,
+      43.95,
+      1.16,
+      1.0
+    ],
+    [
+      46.6,
+      52.9,
+      1.0,
+      1.06
+    ],
+    [
+      53.2,
+      53.55,
+      1.06,
+      1.15
+    ],
+    [
+      55.05,
+      55.45,
+      1.15,
+      1.0
+    ],
+    [
+      59.6,
+      64.9,
+      1.0,
+      1.08
+    ]
+  ],
+  "data_sequences": [
+    {
+      "in": 13.95,
+      "out": 31.25,
+      "label": "By the numbers",
+      "title": "Retirement Anxiety",
+      "subtitle": "",
+      "source_note": "",
+      "stats": [
+        {
+          "t": 14.62,
+          "value": 51,
+          "suffix": "%",
+          "qualifier": "Nearly",
+          "label": "of Americans worry about outliving their savings"
+        },
+        {
+          "t": 18.7,
+          "value": 70,
+          "suffix": "%",
+          "label": "of retirees wish they had started saving earlier"
+        },
+        {
+          "t": 23.0,
+          "value": 55,
+          "suffix": "%",
+          "label": "of Americans worry they won't achieve financial security in retirement"
+        }
+      ]
+    }
+  ]
+}

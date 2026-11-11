@@ -46,19 +46,19 @@ def probe(path):
 
 
 def graphics_windows(plan):
-    """Best-effort: any top-level list of dicts with start/end, except zooms."""
+    """Windows B-roll must stay clear of, using ipb_edit.py's plan schema
+    (references/edit-plan.md). Tails include each element's exit animation."""
     wins = []
-    for key, val in plan.items():
-        if key == "broll" or "zoom" in key.lower() or not isinstance(val, list):
-            continue
-        for item in val:
-            if isinstance(item, dict) and isinstance(item.get("start"), (int, float)) \
-                    and isinstance(item.get("end"), (int, float)):
-                wins.append((key, float(item["start"]), float(item["end"])))
+    for s in plan.get("data_sequences", []):
+        wins.append(("data sequence", float(s["in"]), float(s["out"]) + 1.0))
+    for tg in plan.get("source_tags", []):
+        wins.append(("source tag", float(tg["in"]), float(tg["out"]) + 0.6))
     lt = plan.get("lower_third")
-    if isinstance(lt, dict) and "start" in lt:
-        wins.append(("lower_third", float(lt["start"]),
-                     float(lt.get("end", lt["start"] + lt.get("duration", 5)))))
+    if lt:
+        wins.append(("lower third", float(lt["in"]), float(lt["out"]) + 0.7))
+    for a, b, z0, z1 in plan.get("zooms", []):
+        if b - a < 1.0 and z1 > z0:  # punch-in: the zoom is the emphasis
+            wins.append(("punch-in zoom", float(a), float(b)))
     return wins
 
 
