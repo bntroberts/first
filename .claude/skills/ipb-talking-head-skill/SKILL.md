@@ -6,7 +6,6 @@ metadata:
   version: '2.0'
   supersedes: ipb-talking-head-video (Perplexity, v1.0)
   connectors:
-    - google_drive: Rough cuts arrive in the "Insurance Pro Blog Videos" Drive folder.
     - storyblocks: B-roll search and licensing (Brandon's account).
     - adobe: Optional speech cleanup and cloud rendering. This is Adobe Express/Firefly, not Premiere Pro desktop.
 ---
@@ -42,7 +41,9 @@ Be accurate with Brandon about this:
 
 ## Inputs
 
-- **Rough cut:** an MP4 in the Google Drive folder "Insurance Pro Blog Videos" (ID `1t4jfnOhWLJ79FLWcmtJbQDblE2ueVFZU`).
+- **Rough cut:** an MP4 in the "YT IPB Videos" folder inside Documents on Brandon's computer (`~/Documents/YT IPB Videos/`). He names the specific video to edit.
+  - Use the file he names exactly. If the name doesn't match a file, list the folder's videos and ask; never guess between similar names.
+  - In a cloud session the folder isn't on the container: call `list_computer_folders`, then `request_computer_folder` for it. If it isn't offered or the computer is offline, tell Brandon and stop.
 - **Transcript:** Brandon supplies it. Do not create one yourself.
   - If it's missing, ask for it before planning edits. Ask for a timestamped export (SRT, VTT, or Descript/Premiere text with timecodes) that matches the final rough cut.
   - If he only has plain text, use it as the authoritative wording and get timings from an automatic word-timing pass on the audio. Tell him you did this.
@@ -52,7 +53,7 @@ Be accurate with Brandon about this:
 
 ## Workflow
 
-1. **Download and check the cut.** Download from Drive, probe the resolution, frame rate and duration, and make a frame contact sheet. Done when the face position is known and `face_center` is updated if the setup has changed.
+1. **Open and check the cut.** Copy the named video from "YT IPB Videos" into a working folder (never edit or overwrite the original), probe the resolution, frame rate and duration, and make a frame contact sheet. Done when the face position is known and `face_center` is updated if the setup has changed.
 2. **Mark the moments.** From the transcript, list:
    - every quoted statistic (number, wording, timestamp);
    - lines worth emphasizing: hooks, key conclusions, contrasts, "here's the deeper reality" pivots;
@@ -73,7 +74,7 @@ Be accurate with Brandon about this:
    - Graphics pass: `python3 scripts/ipb_edit.py plan.json`. For cuts over about 10 minutes, render parallel `--from/--to` chunks split outside any data sequence, join with ffmpeg's concat demuxer, and re-mux the original audio with `-c:a copy`.
    - B-roll pass: `python3 scripts/broll_overlay.py <graphics_render.mp4> plan.json -o "<final>.mp4"`. It overlays the clips full-frame, keeps the main audio untouched, and writes `<final>.xml` for Premiere.
    - Verify the duration matches the source, the audio stream is present, and spot-check a frame inside each B-roll window.
-7. **Deliver.** Name the file "<original name> - Edited v1.mp4", bumping the version for revisions, and share it in chat along with the `.xml`; Brandon downloads them from there. Do not upload to Drive (uploads over about 50–100 MB fail through the connector). Summarize:
+7. **Deliver.** Name the file "<original name> - Edited v1.mp4", bumping the version for revisions, and save it, with the `.xml` and its `broll/` clips, in "YT IPB Videos" next to the original. Never overwrite an existing file. If the work ran somewhere that can't write to his computer, share the files in chat instead. Summarize:
    - each data sequence and the zoom moments, with timestamps;
    - each B-roll insert: timestamp, the line it covers, Storyblocks clip title and ID;
    - unsourced stats;
